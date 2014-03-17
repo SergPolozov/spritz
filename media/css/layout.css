@@ -1,0 +1,21 @@
+.col1{
+position: relative;
+display: inline-block;
+margin: 0 auto;
+float: left;
+
+}
+.container {
+margin-left: auto;
+margin-right: auto;
+width: 582px;
+overflow: auto;
+height: 460px;
+padding: 20px;
+position: relative;
+top: 15px;
+
+}
+.col1{
+width: 560px;
+}
