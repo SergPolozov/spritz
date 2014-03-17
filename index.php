@@ -7,6 +7,7 @@
  * @link http://kohanaframework.org/guide/about.install#application
  */
 $application = 'application';
+//sdf
 
 /**
  * The directory in which your modules are located.
