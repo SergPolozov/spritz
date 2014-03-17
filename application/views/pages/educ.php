@@ -1,0 +1,8 @@
+<p>
+	<span style="font-size:16px;"><span style="font-family:tahoma,geneva,sans-serif;">Современные <strong>квартиры в новостройках</strong> отличаются улучшенной планировкой и повышенным комфортом проживания. Очень часто при строительстве применяются современные материалы, отличающиеся улучшенной шумоизоляцией и повышенной долговечностью, такие как пенобетон или газобетон. Отсутствие проблем с изношенными коммуникациями, электропроводкой, тепло и газоснабжением, также является дополнительным стимулом приобретения квартиры.</span></span></p>
+<p style="text-align: justify;">
+	<span style="font-size:16px;"><span style="font-family:tahoma,geneva,sans-serif;">Обустроенность и отгороженность дворовых территорий, детских площадок, стоянок обеспечивает дополнительную безопасность проживания, чувство защищенности.</span></span></p>
+<p style="text-align: justify;">
+	<span style="font-size:16px;"><span style="font-family:tahoma,geneva,sans-serif;">При покупке <strong>квартиры в новостройке</strong> минимален риск мошенничества, возникновения ситуации с неучтенными и появившимися из ниоткуда &quot;собственниками&quot;, претендующими на жилплощадь.</span></span></p>
+<p style="text-align: justify;">
+	<span style="font-size:16px;"><span style="font-family:tahoma,geneva,sans-serif;">&nbsp;<img alt="" src="http://flinkmedia.ru/wp-content/uploads/2013/05/consulting-flinkmedia.jpeg" style="height: 242px; width: 445px;" />&nbsp;&nbsp;<img alt="" src="http://blog.infakt.pl/wp-content/uploads/2013/06/5-sytuacji-w-kt%C3%B3rych-op%C5%82aca-si%C4%99-zosta%C4%87-VAT-owcem1.jpg" style="width: 480px; height: 242px;" /></span></span></p>

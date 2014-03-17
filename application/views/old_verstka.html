@@ -1,0 +1,548 @@
+><body id="page1"<? if (isset($_REQUEST["print"])){?> class="printbody"<?}?>>
+
+
+
+<? if (!isset($_REQUEST["print"])){?>
+<div class="tail-top">
+<!-- header -->
+<div id="header">
+    <div class="top wrapper" id="top_block">
+        <div class="fleft">
+            <a href="/">
+                <?=$logo?>
+            </a>
+        </div>
+        <div class="fright">
+            <!--<?=$uppart?> -->
+            <div id="top_contacts">
+                <span id="skp"><img src="/media/images/skp.png" alt="" /> france-estate-azur</span>
+                <span id="tel"><img src="/media/images/tel.png" alt="" /></span>
+            </div><!-- #top_contacts -->
+
+
+        </div>
+    </div>
+    <div id="main_menu_wrapper">
+        <div id="menu_wrapper">
+            <div id="site-nav-over"></div>
+            <ul class="site-nav"><?=$top?></ul>
+        </div><!-- #menu_wrapper -->
+    </div><!-- #main_menu_wrapper -->
+</div>
+<!-- content -->
+<div id="content">
+<div class="tail-middle">
+<div class="row-1">
+
+
+    <div class="col-1 <? if($page=='findestate'){ echo 'col-1_b'; } ?> ">
+        <? if($page=="main"){   ?>
+        <div id="slider_box">
+            <div id="slider" style="position: relative;" class="nivoSlider">
+                <?
+                $imgfirst = "/media/userfiles/upload/image/estate/Centrepic/2.jpg";
+                ?>
+                <?=$centerpic?>
+                <div class="nivo-caption" style="display: none; opacity: 0.8;"><p></p></div><div class="nivo-directionNav"><a class="nivo-prevNav">Prev</a><a class="nivo-nextNav">Next</a></div>
+            </div>
+        </div>
+        <?
+    }
+    ?>
+        <?
+}
+?>
+        <div class="indent<? if (isset($_REQUEST["print"])){?>print<?}?>">
+
+        <div class="box" id="<? if($page=='main'){ echo 'not_findestate'; }elseif($page=='favorite'){ echo 'not_findestate'; }elseif($page=='objects' AND !isset($_REQUEST['id'])){ echo 'not_findestate'; } ?>">
+
+            <div class="hide_it" id="<? if($page=='findestate'){ echo 'mess_div'; } ?>">
+                <a class="mailer" href="#">Подписаться</a> на рассылку новых объявлений или <a class="sendfavor1" href="#">оставить зявку</a>.
+            </div><!-- #mess_div -->
+            <div class="inner" >
+                <?
+                if (isset($page) && $page == "news"){
+                    ?>
+                <ul class="list1_all">
+                    <?
+                }
+                ?>
+                    <?=$content?>
+                    <? if (isset($oldurl)){?><!--
+                <p>
+                    <br /><a href="/<?=$oldurl?>">&larr;&nbsp;Назад</a>
+                </p>-->
+                    <?}?>
+                    <?
+                if (isset($favoriteids)){
+                    ?>
+                    <div class="hiden" id="favors"><?=implode(",", $favoriteids)?></div>
+                    <?
+                }
+                if (isset($page) && $page == "news"){
+                    ?>
+                </ul>
+                <?
+                }
+                ?>
+            </div>
+        </div>
+    </div>
+    <? if (!isset($_REQUEST["print"])){?>
+</div>
+
+<? if($page=='findestate'){ ?>
+
+<div class="col-2 col-2_min">
+    <div id="accountActivity">
+        <a class="login"><img src="http://france-estate-azur.com/media/images/icons/door_e.png" alt="Вход" title="Вход"></a>
+        <a class="add_favorite" id_esstate=""><img src="http://france-estate-azur.com/media/images/icons/star.png" alt="Добавить в избранное" title="Добавить в избранное"></a>
+        <a class="sendlink"><img src="http://france-estate-azur.com/media/images/icons/mail_e.png" alt="Отправить ссылку другу" title="Отправить ссылку другу" style="margin-top: 20px;"></a>
+
+        <a class="search_show"><img src="http://france-estate-azur.com/media/images/icons/lens_e.png" alt="Поиск" title="Поиск"></a>
+    </div>
+</div>
+
+
+<div id="search_hidden" class="box1" >
+    <div class="inner" >
+
+        <h2 class="colHeader">Поиск</h2>
+
+        <div id="multiselectDiv">
+            <label style="cursor: pointer;">Регион</label>
+            <select name="regionSelect" id="regionSelect" style="height:110px;">
+                <option></option>
+                <option id="0" class="head10">Франция</option>
+                <option id="1" class="head1 body10 level2">Монако и окрестности</option>
+                <option id="11" class="body1 body10 level3">Монте Карло</option>
+                <option id="12" class="body1 body10 level3">Босолей</option>
+                <option id="15" class="body1 body10 level3">Кап д’Ай</option>
+                <option id="12" class="body1 body10 level3">Рок Брюн Кап Мартан</option>
+                <option id="12" class="body1 body10 level3">Ментона</option>
+                <option id="13" class="head2 body10 body1 level3">Ля Турби</option>
+                <option id="2" class="head3 body10 level2">Район Кап Ферра</option>
+                <option id="21" class="head4 body3 body10 level3" level2>Кап Ферра</option>
+                <option id="19" class="head11">Испания</option>
+            </select>
+        </div>
+
+
+        <form id="form" method="post" action="/findestate/" class="jqtransform">
+            <input type="hidden" id="region" name="region"/>
+
+            <div class="form" style="z-index:999;">
+                <label>Тип объекта</label>
+                <select name="type" id="type">
+                    <option value="-1"<?if (isset($_REQUEST["type"]) && $_REQUEST["type"] == -1){?> selected="selected"<?}?>>Не выбрано</option>
+                    <option value="0"<?if (isset($_REQUEST["type"]) && $_REQUEST["type"] == 0){?> selected="selected"<?}?>>Вилла</option>
+                    <option value="1"<?if (isset($_REQUEST["type"]) && $_REQUEST["type"] == 1){?> selected="selected"<?}?>>Апартаменты</option>
+                    <option value="2"<?if (isset($_REQUEST["type"]) && $_REQUEST["type"] == 2){?> selected="selected"<?}?>>Бизнес</option>
+                    <option value="3"<?if (isset($_REQUEST["type"]) && $_REQUEST["type"] == 3){?> selected="selected"<?}?>>Инвестиции</option>
+                </select>
+            </div>
+
+            <div class="form"  style="position: absolute;right: 31px;top: 64px;">
+                <label>Продажа / Аренда</label>
+                <select name="sell_rent" id="sell_rent">
+                    <option value="-1"<?if (isset($_REQUEST["sell_rent"]) && $_REQUEST["sell_rent"] == -1){?> selected="selected"<?}?>>Не выбрано</option>
+                    <option value="0"<?if (isset($_REQUEST["sell_rent"]) && $_REQUEST["sell_rent"] == 0){?> selected="selected"<?}?>>Продажа</option>
+                    <option value="1"<?if (isset($_REQUEST["sell_rent"]) && $_REQUEST["sell_rent"] == 1){?> selected="selected"<?}?>>Аренда</option>
+                </select>
+            </div>
+
+
+            <div class="form" style="position: absolute;right: 302px;top: 105px;">
+                <label>Цена (тыс. &euro;)</label>
+                <select name="price" id="price">
+                    <option value="0-inf"<?if (isset($_REQUEST["price"]) && $_REQUEST["price"] == '0-inf'){?> selected="selected"<?}?>>Не выбрано</option>
+                    <option value="0-500000"<?if (isset($_REQUEST["price"]) && $_REQUEST["price"] == '0-500000'){?> selected="selected"<?}?>>до 500</option>
+                    <option value="500000-1000000"<?if (isset($_REQUEST["price"]) && $_REQUEST["price"] == '500000-1000000'){?> selected="selected"<?}?>>500-1 000</option>
+                    <option value="1000000-2000000"<?if (isset($_REQUEST["price"]) && $_REQUEST["price"] == '1000000-2000000'){?> selected="selected"<?}?>>1 000-2 000</option>
+                    <option value="2000000-4000000"<?if (isset($_REQUEST["price"]) && $_REQUEST["price"] == '2000000-4000000'){?> selected="selected"<?}?>>2 000-4 000</option>
+                    <option value="4000000-6000000"<?if (isset($_REQUEST["price"]) && $_REQUEST["price"] == '4000000-6000000'){?> selected="selected"<?}?>>4 000-6 000</option>
+                    <option value="6000000-inf"<?if (isset($_REQUEST["price"]) && $_REQUEST["price"] == '6000000-inf'){?> selected="selected"<?}?>>свыше 6 000</option>
+                </select>
+            </div>
+
+            <div class="form" style="position: absolute;left: 576px;top: 105px;">
+                <label>Число спален</label>
+                <select name="bedroom" id="bedroom">
+                    <option value="0"<?if (isset($_REQUEST["bedroom"]) && $_REQUEST["bedroom"] == 0){?> selected="selected"<?}?>>Не выбрано</option>
+                    <option<?if (isset($_REQUEST["bedroom"]) && $_REQUEST["bedroom"] == 1){?> selected="selected"<?}?>>1</option>
+                    <option<?if (isset($_REQUEST["bedroom"]) && $_REQUEST["bedroom"] == 2){?> selected="selected"<?}?>>2</option>
+                    <option<?if (isset($_REQUEST["bedroom"]) && $_REQUEST["bedroom"] == 3){?> selected="selected"<?}?>>3</option>
+                    <option<?if (isset($_REQUEST["bedroom"]) && $_REQUEST["bedroom"] == 4){?> selected="selected"<?}?>>4</option>
+                    <option<?if (isset($_REQUEST["bedroom"]) && $_REQUEST["bedroom"] == 5){?> selected="selected"<?}?>>5</option>
+                    <option<?if (isset($_REQUEST["bedroom"]) && $_REQUEST["bedroom"] == 6){?> selected="selected"<?}?>>6</option>
+                    <option<?if (isset($_REQUEST["bedroom"]) && $_REQUEST["bedroom"] == 7){?> selected="selected"<?}?>>7</option>
+                    <option<?if (isset($_REQUEST["bedroom"]) && $_REQUEST["bedroom"] == 8){?> selected="selected"<?}?>>8</option>
+                    <option<?if (isset($_REQUEST["bedroom"]) && $_REQUEST["bedroom"] == 9){?> selected="selected"<?}?>>9</option>
+                    <option<?if (isset($_REQUEST["bedroom"]) && $_REQUEST["bedroom"] == 10){?> selected="selected"<?}?>>10</option>
+                </select>
+            </div>
+
+
+
+
+
+            <div class="form" style="position: absolute;right: 302px;top: 59px; *top: 61px; z-index: 90000;">
+                <label style="*padding-bottom:5px;">Площадь объекта (м<sup>2</sup>)</label>
+                <select name="area" id="area">
+                    <option value="0-inf"<?if (isset($_REQUEST["area"]) && $_REQUEST["area"] == '0-inf'){?> selected="selected"<?}?>>Не выбрано</option>
+                    <option value="0-100"<?if (isset($_REQUEST["area"]) && $_REQUEST["area"] == '0-100'){?> selected="selected"<?}?>>до 100</option>
+                    <option value="100-200"<?if (isset($_REQUEST["area"]) && $_REQUEST["area"] == '100-200'){?> selected="selected"<?}?>>100-200</option>
+                    <option value="200-300"<?if (isset($_REQUEST["area"]) && $_REQUEST["area"] == '200-300'){?> selected="selected"<?}?>>200-300</option>
+                    <option value="300-500"<?if (isset($_REQUEST["area"]) && $_REQUEST["area"] == '300-500'){?> selected="selected"<?}?>>300-500</option>
+                    <option value="500-inf"<?if (isset($_REQUEST["area"]) && $_REQUEST["area"] == '500-inf'){?> selected="selected"<?}?>>более 500</option>
+                </select>
+            </div>
+
+            <div class="wrapper_form marg-top-10" style="width: 561px; margin-top: 16px;">
+                <div class="checkboxform1">
+
+                    <input type="checkbox" name="terasse" id="terasse"<?if (isset($_REQUEST["terasse"]) && ($_REQUEST["terasse"] == 'on' || $_REQUEST["terasse"] == '1')){?> checked="checked"<?}?>>
+                    <label>Терраса/балкон</label>
+                </div>
+                <div class="checkboxform2">
+                    <input type="checkbox" name="seaview" id="seaview"<?if (isset($_REQUEST["seaview"]) && ($_REQUEST["seaview"] == 'on' || $_REQUEST["seaview"] == '1')){?> checked="checked"<?}?>>
+                    <label>Вид на море</label>
+
+                </div>
+
+                <div class="checkboxform1">
+                    <input type="checkbox" name="garage" id="garage"<?if (isset($_REQUEST["garage"]) && ($_REQUEST["garage"] == 'on' || $_REQUEST["garage"] == '1')){?> checked="checked"<?}?>>
+                    <label>Гараж/паркинг</label>
+                </div>
+
+                <div class="checkboxform2">
+                    <input type="checkbox" name="pool" id="pool"<?if (isset($_REQUEST["pool"]) && ($_REQUEST["pool"] == 'on' || $_REQUEST["pool"] == '1')){?> checked="checked"<?}?>>
+                    <label>Бассейн</label>
+                </div>
+                <div style="clear:both"></div>
+            </div>
+
+
+
+            <div class="idobj" id="id_obj_input">
+                <input type="text" name="idobj" id="idobj" value="<?if (isset($_REQUEST["idobj"])){echo $_REQUEST["idobj"];}?>" /> ID объекта
+            </div>
+
+
+            <div id="ret">
+                <span id="returnCount" style="45text-indent: -57px;"></span>
+            </div>
+
+            <div id="but">
+                <a onclick="document.getElementById('form').submit()" class="link2" href="#">
+                    <em><b>Показать</b></em>
+                </a>
+            </div>
+
+
+        </form>
+
+
+    </div>
+</div>
+</div>
+<? } ?>
+
+
+<div class="col-2 <? if($page=='findestate'){ echo 'hide_it'; } ?>">
+
+    <div class="indent">
+
+        <div class="box4">
+            <div id="accountActivity" class="login_box">
+                <? if($user===0){ ?>
+                <a class="registration">Регистрация</a> / <a class="login">Вход</a>
+                <? }else{ ?>
+                Вы вошли как: <b><?=$user?></b> [ <a class="logout">Выход</a> ]
+                <? } ?>
+            </div>
+        </div>
+        <div class="box1">
+            <div class="inner" >
+                <h2 class="colHeader">Поиск</h2>
+                <div id="multiselectDiv">
+                    <label style="cursor: pointer;">Регион</label>
+                    <select name="regionSelect" id="regionSelect">
+                        <option></option>
+                        <option id="0" class="head10">Франция</option>
+                        <option id="1" class="head1 body10 level2">Монако и окрестности</option>
+                        <option id="11" class="body1 body10 level3">Монте Карло</option>
+                        <option id="12" class="body1 body10 level3">Босолей</option>
+                        <option id="15" class="body1 body10 level3">Кап д’Ай</option>
+                        <option id="12" class="body1 body10 level3">Рок Брюн Кап Мартан</option>
+                        <option id="12" class="body1 body10 level3">Ментона</option>
+                        <option id="13" class="head2 body10 body1 level3">Ля Турби</option>
+                        <option id="2" class="head3 body10 level2">Район Кап Ферра</option>
+                        <option id="21" class="head4 body3 body10 level3" level2>Кап Ферра</option>
+                        <option id="19" class="head11">Испания</option>
+                    </select>
+                </div>
+
+
+                <form id="form" method="post" action="/findestate/" class="jqtransform">
+                    <input type="hidden" id="region" name="region"/>
+
+                    <div class="form">
+                        <label>Тип объекта</label>
+                        <select name="type" id="type">
+                            <option value="-1"<?if (isset($_REQUEST["type"]) && $_REQUEST["type"] == -1){?> selected="selected"<?}?>>Не выбрано</option>
+                            <option value="0"<?if (isset($_REQUEST["type"]) && $_REQUEST["type"] == 0){?> selected="selected"<?}?>>Вилла</option>
+                            <option value="1"<?if (isset($_REQUEST["type"]) && $_REQUEST["type"] == 1){?> selected="selected"<?}?>>Апартаменты</option>
+                            <option value="2"<?if (isset($_REQUEST["type"]) && $_REQUEST["type"] == 2){?> selected="selected"<?}?>>Бизнес</option>
+                            <option value="3"<?if (isset($_REQUEST["type"]) && $_REQUEST["type"] == 3){?> selected="selected"<?}?>>Инвестиции</option>
+                        </select>
+                    </div>
+
+                    <div class="form">
+                        <label>Продажа / Аренда</label>
+                        <select name="sell_rent" id="sell_rent">
+                            <option value="-1"<?if (isset($_REQUEST["sell_rent"]) && $_REQUEST["sell_rent"] == -1){?> selected="selected"<?}?>>Не выбрано</option>
+                            <option value="0"<?if (isset($_REQUEST["sell_rent"]) && $_REQUEST["sell_rent"] == 0){?> selected="selected"<?}?>>Продажа</option>
+                            <option value="1"<?if (isset($_REQUEST["sell_rent"]) && $_REQUEST["sell_rent"] == 1){?> selected="selected"<?}?>>Аренда</option>
+                        </select>
+                    </div>
+
+                    <div class="form">
+                        <label>Число спален</label>
+                        <select name="bedroom" id="bedroom">
+                            <option value="0"<?if (isset($_REQUEST["bedroom"]) && $_REQUEST["bedroom"] == 0){?> selected="selected"<?}?>>Не выбрано</option>
+                            <option<?if (isset($_REQUEST["bedroom"]) && $_REQUEST["bedroom"] == 1){?> selected="selected"<?}?>>1</option>
+                            <option<?if (isset($_REQUEST["bedroom"]) && $_REQUEST["bedroom"] == 2){?> selected="selected"<?}?>>2</option>
+                            <option<?if (isset($_REQUEST["bedroom"]) && $_REQUEST["bedroom"] == 3){?> selected="selected"<?}?>>3</option>
+                            <option<?if (isset($_REQUEST["bedroom"]) && $_REQUEST["bedroom"] == 4){?> selected="selected"<?}?>>4</option>
+                            <option<?if (isset($_REQUEST["bedroom"]) && $_REQUEST["bedroom"] == 5){?> selected="selected"<?}?>>5</option>
+                            <option<?if (isset($_REQUEST["bedroom"]) && $_REQUEST["bedroom"] == 6){?> selected="selected"<?}?>>6</option>
+                            <option<?if (isset($_REQUEST["bedroom"]) && $_REQUEST["bedroom"] == 7){?> selected="selected"<?}?>>7</option>
+                            <option<?if (isset($_REQUEST["bedroom"]) && $_REQUEST["bedroom"] == 8){?> selected="selected"<?}?>>8</option>
+                            <option<?if (isset($_REQUEST["bedroom"]) && $_REQUEST["bedroom"] == 9){?> selected="selected"<?}?>>9</option>
+                            <option<?if (isset($_REQUEST["bedroom"]) && $_REQUEST["bedroom"] == 10){?> selected="selected"<?}?>>10</option>
+                        </select>
+                    </div>
+
+                    <div class="form">
+                        <label>Цена (тыс. &euro;)</label>
+                        <select name="price" id="price">
+                            <option value="0-inf"<?if (isset($_REQUEST["price"]) && $_REQUEST["price"] == '0-inf'){?> selected="selected"<?}?>>Не выбрано</option>
+                            <option value="0-500000"<?if (isset($_REQUEST["price"]) && $_REQUEST["price"] == '0-500000'){?> selected="selected"<?}?>>до 500</option>
+                            <option value="500000-1000000"<?if (isset($_REQUEST["price"]) && $_REQUEST["price"] == '500000-1000000'){?> selected="selected"<?}?>>500-1 000</option>
+                            <option value="1000000-2000000"<?if (isset($_REQUEST["price"]) && $_REQUEST["price"] == '1000000-2000000'){?> selected="selected"<?}?>>1 000-2 000</option>
+                            <option value="2000000-4000000"<?if (isset($_REQUEST["price"]) && $_REQUEST["price"] == '2000000-4000000'){?> selected="selected"<?}?>>2 000-4 000</option>
+                            <option value="4000000-6000000"<?if (isset($_REQUEST["price"]) && $_REQUEST["price"] == '4000000-6000000'){?> selected="selected"<?}?>>4 000-6 000</option>
+                            <option value="6000000-inf"<?if (isset($_REQUEST["price"]) && $_REQUEST["price"] == '6000000-inf'){?> selected="selected"<?}?>>свыше 6 000</option>
+                        </select>
+                    </div>
+
+                    <!--<div class="wrapper_form marg-top-10">
+                  <label>Цена (тыс. &euro;)</label>
+                            <div class="checkboxform1">
+                                <label>От</label>
+                                <input type="text" name="pricestart" id="pricestart" class="halfinput" />
+                            </div>
+                            <div class="checkboxform2">
+                                <label>До</label>
+                                <input type="text" name="priceend" id="priceend" class="halfinput" />
+                            </div>
+                            <div style="clear:both"></div>
+                        </div>
+
+                        --><div class="form">
+                    <label>Площадь объекта (м<sup>2</sup>)</label>
+                    <select name="area" id="area">
+                        <option value="0-inf"<?if (isset($_REQUEST["area"]) && $_REQUEST["area"] == '0-inf'){?> selected="selected"<?}?>>Не выбрано</option>
+                        <option value="0-100"<?if (isset($_REQUEST["area"]) && $_REQUEST["area"] == '0-100'){?> selected="selected"<?}?>>до 100</option>
+                        <option value="100-200"<?if (isset($_REQUEST["area"]) && $_REQUEST["area"] == '100-200'){?> selected="selected"<?}?>>100-200</option>
+                        <option value="200-300"<?if (isset($_REQUEST["area"]) && $_REQUEST["area"] == '200-300'){?> selected="selected"<?}?>>200-300</option>
+                        <option value="300-500"<?if (isset($_REQUEST["area"]) && $_REQUEST["area"] == '300-500'){?> selected="selected"<?}?>>300-500</option>
+                        <option value="500-inf"<?if (isset($_REQUEST["area"]) && $_REQUEST["area"] == '500-inf'){?> selected="selected"<?}?>>более 500</option>
+                    </select>
+                </div>
+
+                    <!--<div class="wrapper_form marg-top-10">
+                    <label>Площадь объекта (м<sup>2</sup>)</label>
+                        <div class="checkboxform1">
+                            <label>От</label>
+                            <input type="text" name="areastart" id="areastart" class="halfinput" />
+                        </div>
+                        <div class="checkboxform2">
+                            <label>До</label>
+                            <input type="text" name="areaend" id="areaend" class="halfinput" />
+                        </div>
+                        <div style="clear:both"></div>
+                    </div>
+
+                    --><div class="wrapper_form marg-top-10">
+                    <div class="checkboxform1">
+                        <input type="checkbox" name="pool" id="pool"<?if (isset($_REQUEST["pool"]) && ($_REQUEST["pool"] == 'on' || $_REQUEST["pool"] == '1')){?> checked="checked"<?}?>>
+                        <label>Бассейн</label>
+                    </div>
+                    <div class="checkboxform2">
+                        <input type="checkbox" name="garage" id="garage"<?if (isset($_REQUEST["garage"]) && ($_REQUEST["garage"] == 'on' || $_REQUEST["garage"] == '1')){?> checked="checked"<?}?>>
+                        <label>Гараж/паркинг</label>
+                    </div>
+                    <div style="clear:both"></div>
+                </div>
+
+                    <div class="wrapper_form">
+
+                        <div class="checkboxform1">
+                            <input type="checkbox" name="seaview" id="seaview"<?if (isset($_REQUEST["seaview"]) && ($_REQUEST["seaview"] == 'on' || $_REQUEST["seaview"] == '1')){?> checked="checked"<?}?>>
+                            <label>Вид на море</label>
+                        </div>
+                        <div class="checkboxform2">
+                            <input type="checkbox" name="terasse" id="terasse"<?if (isset($_REQUEST["terasse"]) && ($_REQUEST["terasse"] == 'on' || $_REQUEST["terasse"] == '1')){?> checked="checked"<?}?>>
+                            <label>Терраса/балкон</label>
+                        </div>
+                        <div style="clear:both"></div>
+                    </div>
+
+                    <div class="idobj">
+                        ID объекта <input type="text" name="idobj" id="idobj" value="<?if (isset($_REQUEST["idobj"])){echo $_REQUEST["idobj"];}?>" />
+                    </div>
+
+                    <div class="wrapper">
+                        <span id="returnCount"></span>
+                        <a onclick="document.getElementById('form').submit()" class="link2" href="#">
+                            <em><b>Показать</b></em>
+                        </a>
+                    </div>
+                </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <div class="indent">
+        <div class="box2">
+            <div class="inner">
+                <h2 class="colHeader">Новости</h2>
+                <ul class="list1">
+
+                    <?=$news?>
+                </ul>
+                <div class="wrapper"><a class="link2" href="/news/"><em><b>Все новости</b></em></a></div>
+            </div>
+        </div>
+
+    </div>
+
+    <!--<div class="box3">
+                    <div class="inner">
+                        <?=$agents?>
+                    </div>-->
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+<!-- footer -->
+<div id="footer">
+    <?=$downpart?>
+
+</div>
+</div>
+
+
+
+<div id="hidden" style="display: none">
+    <div id="dialogRegistrationForm" class="dialog-form" title="Регистрация">
+        <form action="/ajax/reg" id="registrationForm" method="post">
+            <table>
+                <tr>
+                    <th><label for="username">Имя&nbsp;</label></th>
+                    <td><input type="text" name="username" id="usernameReg" class="text ui-widget-content ui-corner-all" /></td>
+                </tr>
+                <tr>
+                    <th><label for="email">Email&nbsp;</label></th>
+                    <td><input type="text" name="email" id="emailReg" value="" class="text ui-widget-content ui-corner-all" /></td>
+                </tr>
+                <tr>
+                    <th><label for="password">Пароль&nbsp;</label></th>
+                    <td><input type="password" name="password" id="passwordReg" value="" class="text ui-widget-content ui-corner-all" /></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <div id="dialogLoginForm" class="dialog-form" title="Вход">
+        <form action="/ajax/login" id="loginForm" method="post">
+            <table>
+                <tr>
+                    <th><label for="username">Имя&nbsp;</label></th>
+                    <td><input type="text" name="username" id="usernameLogin" class="text ui-widget-content ui-corner-all" /></td>
+                </tr>
+                <tr>
+                    <th><label for="password">Пароль&nbsp;</label></th>
+                    <td><input type="password" name="password" id="passwordLogin" value="" class="text ui-widget-content ui-corner-all" /></td>
+                </tr>
+            </table>
+        </form>
+        <br>
+        <a class="registration" href="#">Регистрация</a>
+    </div>
+
+    <div id="dialogLinkFriendForm" class="dialog-form" title="Отправить ссылку другу">
+        <form action="/ajax/send_link" id="LinkFriendForm" method="post">
+            <table>
+                <tr>
+                    <th><label for="friend_email">E-mail&nbsp;</label></th>
+                    <td><input type="text" name="friend_email" id="friend_email" class="text ui-widget-content ui-corner-all" />
+                        <input type="hidden" name="friend_id" id="friend_id" class="text ui-widget-content ui-corner-all" value=""/>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <div id="dialogMailerForm" class="dialog-form" title="Отправить ссылку другу">
+        <form action="/ajax/mailer" id="MailerForm" method="post">
+            <table>
+                <tr>
+                    <th><label for="email">E-mail&nbsp;</label></th>
+                    <td><input type="text" name="email" id="email" class="text ui-widget-content ui-corner-all" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <div id="needSingin" class="dialog-form" title="Добавление в избанное">
+        <p>Чтобы сохранить избранное вам следует пройти регистрацию или авторизоваться.</p>
+        <a class="registration">Регистрация</a> / <a class="login">Вход</a>
+    </div>
+</div>
+<?} else {
+    ?>
+<script>
+    $(document).ready(function(){
+        print();
+    });
+</script>
+<?
+}?>
+</body></html>
